@@ -5,7 +5,7 @@ import numpy as np
 # Vapi API configuration
 auth_token = '4529e07b-e40b-441d-81e4-ffeee189f40b'
 assistant_id = '5f439088-9a29-4531-8993-85910b1b0477'
-phone_number_id = 'cd74c85c-7cb3-4120-aceb-94fba4b1f0c8'
+phone_number_id = '05888767-e281-446a-b0b9-f9fe4c594b6e'
 provider=['playht','11labs']
 a=np.random.randint(0,2)
 voice=[['s3://voice-cloning-zero-shot/f3c22a65-87e8-441f-aea5-10a1c201e522/original/manifest.json','s3://mockingbird-prod/ayla_vo_expressive_16095e08-b9e8-429b-947c-47a75e41053b/voices/speaker/manifest.json','s3://voice-cloning-zero-shot/801a663f-efd0-4254-98d0-5c175514c3e8/jennifer/manifest.json','s3://voice-cloning-zero-shot/b2f5441d-354f-4c2f-8f32-390aaaabf42d/charlottesaad/manifest.json','s3://peregrine-voices/charlotte ads parrot saad/manifest.json','s3://voice-cloning-zero-shot/5b81dc4c-bf98-469d-96b4-8f09836fb500/aurorasaad/manifest.json','s3://voice-cloning-zero-shot/f43cc4b4-b193-4a13-a903-e6b125c3d572/original/manifest.json','s3://voice-cloning-zero-shot/34eaa933-62cb-4e32-adb8-c1723ef85097/original/manifest.json','s3://voice-cloning-zero-shot/f741f871-63ad-4207-8278-907aec4e9e50/aylameditationsaad/manifest.json','s3://voice-cloning-zero-shot/b709b944-9256-4578-b9d8-a1ce4d729022/eileensaad/manifest.json','s3://voice-cloning-zero-shot/e5df2eb3-5153-40fa-9f6e-6e27bbb7a38e/original/manifest.json'],['qXROlfoWotxhFxvZc0dY','wlmwDR77ptH6bKHZui0l','FQygEXXdVfjOosF7jzJ7','ftDdhfYtmfGP0tFlBYA1','Oq0cIHWGcnbOGozOQv0t','MGaY6WIx4nO5dhOtYlvw','NlykoD7D8eVGPHL3HAze','90ipbRoKi4CpHXvKVtl0','tzoR7arDwmW2nN2tuFJy','KRCS4PnIIvwc4cjKLAz5','ZeK6O9RfGNGj0cJT2HoJ']]
