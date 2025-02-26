@@ -81,8 +81,7 @@ with st.form("call_form"):
     if submitted:
         if not name:
             st.error("Please enter a name")
-        elif not is_valid_phone(phone_number):
-            st.error("Please enter a valid phone number with country code (e.g., +917300608902)")
+        
         else:
             with st.spinner("Initiating call..."):
                 result = make_vapi_call(name, phone_number)
