@@ -79,10 +79,7 @@ with st.form("call_form"):
     submitted = st.form_submit_button("Make Call")
     
     if submitted:
-        if not name:
-            st.error("Please enter a name")
-        
-        else:
+
             with st.spinner("Initiating call..."):
                 result = make_vapi_call(name, phone_number)
                 
