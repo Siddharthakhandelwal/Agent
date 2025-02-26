@@ -70,6 +70,7 @@ with st.form("call_form"):
                     st.error(f"Call failed: {result.get('message', 'Unknown error')}")
                 else:
                     st.success("Call initiated successfully!.Kindly check your phone.")
+                    
                     # st.json(result)
 
 # Add some helpful information
