@@ -5,7 +5,7 @@ import numpy as np
 # Vapi API configuration
 auth_token = '4529e07b-e40b-441d-81e4-ffeee189f40b'
 assistant_id = '5f439088-9a29-4531-8993-85910b1b0477'
-phone_number_id = 'cd74c85c-7cb3-4120-aceb-94fba4b1f0c8'
+phone_number_id = '05888767-e281-446a-b0b9-f9fe4c594b6e'
 provider=['playht','11labs']
 a=np.random.randint(0,2)
 voice=[['s3://voice-cloning-zero-shot/f3c22a65-87e8-441f-aea5-10a1c201e522/original/manifest.json','s3://mockingbird-prod/ayla_vo_expressive_16095e08-b9e8-429b-947c-47a75e41053b/voices/speaker/manifest.json','s3://voice-cloning-zero-shot/801a663f-efd0-4254-98d0-5c175514c3e8/jennifer/manifest.json'],['qXROlfoWotxhFxvZc0dY','wlmwDR77ptH6bKHZui0l','FQygEXXdVfjOosF7jzJ7']]
