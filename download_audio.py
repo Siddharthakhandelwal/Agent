@@ -2,12 +2,12 @@ import requests
 
 # Replace with your actual VAPI API token
 VAPI_API_TOKEN = "4529e07b-e40b-441d-81e4-ffeee189f40b"
-CALL_ID = "642c16c3-9955-449e-a3bc-6705f5bb6141"  # Replace with the actual call ID
+CALL_ID = "cee54c1b-bfd7-44f6-af8b-f9b9dba83611"  # Replace with the actual call ID
 OUTPUT_FILE = "call_audio.wav"  # Change filename if needed
 
 def get_call_details():
     """Fetch call details including the stereo recording URL."""
-    url = f"https://api.vapi.ai/call"
+    url = f"https://api.vapi.ai/call/{CALL_ID}"
     headers = {"Authorization": f"Bearer {VAPI_API_TOKEN}"}
 
     response = requests.get(url, headers=headers)
@@ -15,6 +15,7 @@ def get_call_details():
     if response.status_code == 200:
         data = response.json()
         print(len(data)) #
+        print(data.keys()) #
         return data
     else:
         print(f"Failed to get call details: {response.text}")
