@@ -9,5 +9,7 @@ def querry_search(callid):
     }
     response = requests.get(url, headers=headers)
     querry = response.json()
-    print(querry['analysis']['structuredData']['query'])
+    print(querry['status'])
 querry_search("d379f518-4a5d-477d-b229-d2e1204dfdf2")
+
+# ['analysis']['structuredData']['query']
