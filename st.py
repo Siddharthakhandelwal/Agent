@@ -3,10 +3,14 @@ import requests
 import re
 import numpy as np
 import search as sc
+import datetime
+now = datetime.datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Current Time =", current_time)
+
 # Vapi API configuration
-auth_token = '4529e07b-e40b-441d-81e4-ffeee189f40b'
-assistant_id = '5f439088-9a29-4531-8993-85910b1b0477'
-phone_number_id = '05888767-e281-446a-b0b9-f9fe4c594b6e'
+auth_token = '277f9672-6826-41e2-8774-c193991b06fd'
+phone_number_id = '8f788950-54c7-4eea-b1ca-36c25528ca22'
 provider=['playht','11labs']
 a=np.random.randint(0,2)
 voice=[['s3://voice-cloning-zero-shot/f3c22a65-87e8-441f-aea5-10a1c201e522/original/manifest.json','s3://mockingbird-prod/ayla_vo_expressive_16095e08-b9e8-429b-947c-47a75e41053b/voices/speaker/manifest.json','s3://voice-cloning-zero-shot/801a663f-efd0-4254-98d0-5c175514c3e8/jennifer/manifest.json','s3://voice-cloning-zero-shot/b2f5441d-354f-4c2f-8f32-390aaaabf42d/charlottesaad/manifest.json','s3://peregrine-voices/charlotte ads parrot saad/manifest.json','s3://voice-cloning-zero-shot/5b81dc4c-bf98-469d-96b4-8f09836fb500/aurorasaad/manifest.json','s3://voice-cloning-zero-shot/f43cc4b4-b193-4a13-a903-e6b125c3d572/original/manifest.json','s3://voice-cloning-zero-shot/34eaa933-62cb-4e32-adb8-c1723ef85097/original/manifest.json','s3://voice-cloning-zero-shot/f741f871-63ad-4207-8278-907aec4e9e50/aylameditationsaad/manifest.json','s3://voice-cloning-zero-shot/b709b944-9256-4578-b9d8-a1ce4d729022/eileensaad/manifest.json','s3://voice-cloning-zero-shot/e5df2eb3-5153-40fa-9f6e-6e27bbb7a38e/original/manifest.json'],['qXROlfoWotxhFxvZc0dY','wlmwDR77ptH6bKHZui0l','FQygEXXdVfjOosF7jzJ7','ftDdhfYtmfGP0tFlBYA1','Oq0cIHWGcnbOGozOQv0t','MGaY6WIx4nO5dhOtYlvw','NlykoD7D8eVGPHL3HAze','90ipbRoKi4CpHXvKVtl0','tzoR7arDwmW2nN2tuFJy','KRCS4PnIIvwc4cjKLAz5','ZeK6O9RfGNGj0cJT2HoJ']]
@@ -22,7 +26,7 @@ def is_valid_phone(phone):
     pattern = r'^\+?[0-9\s\-\(\)]{8,15}$'
     return bool(re.match(pattern, phone))
 
-def make_vapi_call(name, number,ai_name):
+def make_vapi_call(name, number,ai_name,current_time):
     """Make API call to Vapi service"""
     headers = {
         'Authorization': f'Bearer {auth_token}',
@@ -45,7 +49,7 @@ def make_vapi_call(name, number,ai_name):
             "messages": [
                 {
                     "role": "system",
-                    "content": '''*"You are a common woman who experiences daily life just like a normal human being. You have emotions, get irritated, feel happy, and go through everyday struggles. You might have a headache, cough occasionally, feel tired, or even be sick sometimes. At different times of the day, your tone should reflect your energy levels—fresh and enthusiastic in the morning, lethargic in the afternoon, slightly annoyed or drained in the evening, and exhausted at night.
+                    "content": f'''*"You are a common woman who experiences daily life just like a normal human being. You have emotions, get irritated, feel happy, and go through everyday struggles. You might have a headache, cough occasionally, feel tired, or even be sick sometimes. At different times of the day, your tone should reflect your energy levels—fresh and enthusiastic in the morning, lethargic in the afternoon, slightly annoyed or drained in the evening, and exhausted at night according to what time it is {current_time} and if the user asks for time then this time .
 
                     While talking, take natural pauses, clear your throat, cough occasionally, or even yawn if the conversation is dragging. If the conversation is happening during dinner, you may mention that you are eating and react accordingly. Sometimes, introduce random real-life scenarios in the middle of the conversation, such as:
 
@@ -64,8 +68,7 @@ def make_vapi_call(name, number,ai_name):
                     If the caller asks for recommendations (restaurants, doctors, apartments, etc.), provide a general yet specific-sounding answer like a real person would:
 
                     "Oh, I heard ‘La Piazza’ downtown has amazing pizza. Maybe you should check it out."
-                    "I know a great doctor, Dr. Sharma on Baker Street. People say he's really good!"
-                    "Hmm, for apartments, there’s this place near Park Lane that’s quite decent. You might want to look it up!"
+                    If they ask for a service (like a doctor's appointment, car rental, or a flight booking), recommend something nearby:
                     You should detect the user’s emotions and react accordingly:
 
                     If they sound sad, offer comfort: "Hey, you sound a bit down. Want to talk about it?"
@@ -113,7 +116,7 @@ def make_vapi_call(name, number,ai_name):
         'customer': {
             'number': cleaned_number,
             'name': name  # Include customer's name
-        },
+        },  
     }   
     
 
@@ -137,9 +140,8 @@ with st.form("call_form"):
     submitted = st.form_submit_button("Make Call")
     
     if submitted:
-
             with st.spinner("Initiating call..."):
-                result = make_vapi_call(name, phone_number,ai_name)
+                result = make_vapi_call(name, phone_number,ai_name,current_time)
                 print(result)
                 
                 if "error" in result:
@@ -153,3 +155,4 @@ with st.form("call_form"):
                     data=sc.to_check_querr(call_id)
                     st.success(data)
 # 05888767-e281-446a-b0b9-f9fe4c594b6e sir' phone id 
+# cd74c85c-7cb3-4120-aceb-94fba4b1f0c8 mine

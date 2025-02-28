@@ -88,7 +88,7 @@ def crawl_web(querry):
 
 
 def to_check_querr(call_id):
-  auth_token = '4529e07b-e40b-441d-81e4-ffeee189f40b'
+  auth_token = '277f9672-6826-41e2-8774-c193991b06fd'
   url = f"https://api.vapi.ai/call/{call_id}"
   headers = {
       'Authorization': f'Bearer {auth_token}',
